@@ -1,0 +1,11 @@
+state: enabled
+email: nic@askable.com
+fullname: Nic
+title: Administrator
+access:
+  admin:
+    login: true
+    super: true
+  site:
+    login: true
+hashed_password: $2a$10$BimqGnlxurK/EewMFx5he.TmhDMeFJhXDXUaDGRq2y4zJcd63TJCW

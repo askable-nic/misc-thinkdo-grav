@@ -1,0 +1,27 @@
+{% extends 'partials/base.html.twig' %}
+{% block content %}
+  {% if page.slug == 'timer' %}
+    <div class="swiper-slide">
+      {% set minutes = uri.query('minutes')|default(0) %}
+      {% set ms = minutes * 60000 %}
+      <div id="countdown-timer" data-time="{{ ms }}" class="wf-type">
+        {% if minutes > 60 %}
+          {{ (minutes / 60)|floor() }}:{{ "%02d"|format((minutes * 1)|modulus(60)) }}:{{ "%02d"|format((minutes * 60)|modulus(60)) }}
+        {% else %}
+          {{ minutes|floor() }}:{{ "%02d"|format((minutes * 60)|modulus(60)) }}
+        {% endif %}
+        <small>click to start</small>
+      </div>
+    </div>
+  {% endif %}
+  {% if page.slug == 'round-robin' %}
+    <div class="swiper-slide">
+      <div id="round-robin">
+        <form action="javascript:;">
+          <input type="text" placeholder="Person 1, Person 2, Person 3" name="names" class="giant-input wf-type" autocomplete="off">
+          <input type="hidden">
+        </form>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}

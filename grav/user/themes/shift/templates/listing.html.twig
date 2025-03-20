@@ -1,0 +1,24 @@
+{% extends 'partials/base.html.twig' %}
+{% block content %}
+  <div class="swiper-slide swiper-vertical-slide intro-slide">
+    <div class="content">
+      <h1>{{ page.title }}</h1>
+      {{ page.content|raw }}
+      {% if (count(page.collection()) > 0) %}
+        {% set items = page.collection() %}
+      {% elseif count(page.children) > 0 %}
+        {% set items = page.children %}
+      {% endif %}
+
+      {% if count(items) > 0 %}
+      <nav class="listing-items">
+        {% for child in items %}
+          <a href="{{ child.url }}">
+          {{ child.title }}
+          </a>
+        {% endfor %}
+      </nav>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

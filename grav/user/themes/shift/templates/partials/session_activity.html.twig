@@ -1,0 +1,12 @@
+<a class="detail length" href="{{ base_url }}timer?minutes={{ page.header.content.length|intval() }}" target="_blank">
+  <img src="{{theme_url}}/images/time.svg"><br>
+  {{ page.header.content.length }}
+</a>
+<div class="content">
+  <h1>{{ page.title }}</h1>
+  {{ page.content|raw }}
+</div>
+<span class="detail team">
+  <img src="{{theme_url}}/images/people.svg"><br>
+  {{ page.header.content.teams }}
+</span>

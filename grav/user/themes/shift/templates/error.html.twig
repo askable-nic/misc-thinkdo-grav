@@ -1,0 +1,18 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+<div id="sliding-content">
+	<div class="swiper-container swiper-container-v">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide slide-hero content-slide">
+				<div class="content">
+					<h1>Error {{ page.header.http_response_code }}</h1>
+					<p>
+						{{ page.content|striptags }}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

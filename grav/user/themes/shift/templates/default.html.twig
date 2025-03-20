@@ -1,0 +1,23 @@
+{% extends 'partials/base.html.twig' %}
+{% block content %}
+  {% if count(page.children) == 0 %}
+    {{ page.content }}
+  {% else %}
+  {% set collection = page.collection() %}
+  <div class="swiper-container swiper-container-v">
+      <div class="swiper-wrapper">
+        {% for child in collection %}
+        <div class="swiper-slide swiper-vertical-slide slide-{{ slug.id }}" data-hash="{{ child.slug }}">
+          {% if child.template == "session" %}
+            {% include 'session.html.twig' with {'session':page, 'page':child, 'context':'root'} %}
+          {% else %}
+              <div class="content">{{ child.content|raw }}</div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-button swiper-button-next container-button"></div>
+      <div class="swiper-button swiper-button-prev container-button"></div>
+  </div>
+  {% endif %}
+{% endblock %}

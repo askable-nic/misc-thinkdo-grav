@@ -1,0 +1,16 @@
+{# standalone activity page #}
+{% embed 'partials/base.html.twig' %}
+
+	{% block content %}
+	<div id="sliding-content">
+	  <div class="swiper-container">
+      <div class="swiper-wrapper">
+				<div class="swiper-slide swiper-product-slide">
+					{% include 'partials/session_activity.html.twig' with {'session':page.parent, 'page':page, 'context':'landing'} %}
+				</div>
+      </div>
+	  </div>
+	</div>
+	{% endblock %}
+
+{% endembed %}

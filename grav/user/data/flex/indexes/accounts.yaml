@@ -1,0 +1,9 @@
+version: '1.2'
+timestamp: 1742448035
+count: 1
+index:
+  admin:
+    storage_key: admin
+    storage_timestamp: 1742448035
+    key: admin
+    email: nic@askable.com

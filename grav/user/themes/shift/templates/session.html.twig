@@ -1,0 +1,44 @@
+{#
+	{{ page.title }}
+	<br>{{ page.url }}
+	<br>{{ page.content|raw }}
+	<pre>
+		{% set contentDebug = print_r(page,true) %}
+		{{ contentDebug }}
+	</pre>
+#}
+<div class="swiper-container swiper-container-h swiper-horizontal-slide">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide swiper-slide-h intro-slide slide-{{ page.id }} slide-type-{{ child.template }}">
+				<div class="content">
+					<h1>{{ page.title }}</h1>
+					{{ page.content|raw }}
+					<ul class="activities">
+					{% set collection = page.collection() %}
+					{% for child in collection %}
+						{% include 'partials/session_activity_overview.html.twig' with {'page':child, 'siblings': collection} %}
+					{% endfor %}
+					</ul>
+				</div>
+			</div>
+
+			{% for child in collection %}
+				{% if child.content | trim > "" %}
+					<div class="swiper-slide swiper-slide-h slide-{{ child.id }} slide-type-{{ child.template }}">{% include 'partials/session_activity.html.twig' with {'page':child} %}</div>
+					{% set methods = child.collection() %}
+					{% for method in methods %}
+						<div class="swiper-slide swiper-slide-h">
+							<div class="content">
+								<h1>{{ child.title }}</h1>
+								<h2>{{ method.title }}</h2>
+								{{ method.content|raw }}
+							</div>
+						</div>
+					{% endfor %}
+				{% endif %}
+			{% endfor %}
+		</div>
+		<div class="swiper-pagination swiper-pagination-h"></div>
+		<div class="swiper-button swiper-button-next horizontal-slider-button"></div>
+		<div class="swiper-button swiper-button-prev horizontal-slider-button"></div>
+</div>
